@@ -1,0 +1,108 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+
+```
+
+```{css}
+body {
+  background-color: #2F4858;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 90px;
+}
+
+h2 {
+  font-weight: bold;
+  text-align: center;
+  color: #F4E3B2;
+  font-size: 45px;
+}
+
+h3 {
+  font-weight: bold;
+  text-align: center;
+  color: #F4E3B2;
+  font-size: 25px;
+}
+
+p {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+
+```
+
+## Youtube Thumbnail Analysis
+
+I am looking to analyse the obtained data from my google form to see whether certain features of a YouTube thumbnail will affect my likeliness to watch and the appeal of the YouTube video.
+
+```{r}
+# csv file from our collected data
+csv_file <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQgWXRc4PtTkTKUYpKXDiJ8YtAl3nF38Snr8_hTgKf9SDcGQgSm1K1S1CtGhefUlaaf5vu3mxhss4q0/pub?output=csv"
+
+# read the csv file
+logged_data <- read_csv(csv_file)
+
+# rename variables in our data frame
+latest_data <- logged_data %>%
+  rename(video_type = 2,
+         text_percentage = 3,
+         image_percentage = 4,
+         thumbnail_emotion = 5,
+         interesting_details = 6,
+         likeliness_to_watch = 7
+         )
+
+# extracting vectors from our data frames for txt percentage and img percentage
+txt_percentage <- latest_data$text_percentage
+img_percentage <- latest_data$image_percentage
+
+# summary values for report (means of txt and img percentage)
+mean_txt_percentage <- mean(txt_percentage)
+mean_img_percentage <- mean(img_percentage)
+
+# dynamic comments
+comment_1 <- paste("From our data we find that the mean percentage of thumbnail covered by text is", mean_txt_percentage, "% and the mean percentage of thumbnail covered by images is", mean_img_percentage, "%.")
+
+```
+
+### Summary Values:
+`r comment_1`
+
+From the following information we can see that thumbnails typically contain a higher percentage of images than text.
+
+### Bar Chart One:
+
+Our first bar chart is used to determine if the genre of Youtube video will influence my likeliness to watch the video:
+
+```{r}
+# first bar chart
+latest_data %>%
+  ggplot() +
+    geom_bar(aes(x = likeliness_to_watch, fill = video_type)) +
+  labs(title = "Most likely to watch what type of Youtube Video?",
+       subtitle = "seeing what type of video am I more likely to watch     based on thumbnail",
+       x = "likeliness to watch (1 - 5)",
+       y = "video ount")
+
+```
+
+### Bar Chart Two:
+
+Our second bar chart is used to determine if the emotion displayed on the thumbnail is dependent on the Youtube video genre.
+
+```{r}
+# second bar chart
+latest_data %>%
+  ggplot() +
+    geom_bar(aes(x = video_type, fill = thumbnail_emotion)) +
+  labs(title = "Does emotion displayed on the thumbnail depend on the video type?",
+       x = "youtube video genre",
+       y = "video count")
+```
