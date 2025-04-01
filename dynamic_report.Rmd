@@ -64,8 +64,10 @@ txt_percentage <- latest_data$text_percentage
 img_percentage <- latest_data$image_percentage
 
 # summary values for report (means of txt and img percentage)
-mean_txt_percentage <- mean(txt_percentage)
-mean_img_percentage <- mean(img_percentage)
+mean_txt_percentage <- mean(txt_percentage) %>%
+  round(1)
+mean_img_percentage <- mean(img_percentage) %>%
+  round(1)
 
 # dynamic comments
 comment_1 <- paste("From our data we find that the mean percentage of thumbnail covered by text is", mean_txt_percentage, "% and the mean percentage of thumbnail covered by images is", mean_img_percentage, "%.")
