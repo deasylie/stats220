@@ -95,6 +95,8 @@ latest_data %>%
 
 ```
 
+From this bar chart, we can see that I am most likely to watch 'Entertainment' Youtube videos over gaming, music and educational videos. We can also see how I did not look at any sports or news YouTube videos when filling out my observations for YouTube thumbnails. 
+
 ### Bar Chart Two:
 
 Our second bar chart is used to determine if the emotion displayed on the thumbnail is dependent on the Youtube video genre.
@@ -108,3 +110,7 @@ latest_data %>%
        x = "youtube video genre",
        y = "video count")
 ```
+From this second bar chart, we can see that educational videos typically show calm emotions in their thumbnails while entertainment mostly show happy/exciting emotions but occasionally contain dramatic thumbnails which is fitting for entertainment videos.
+
+We can also see that music videos generally showcase a mix of emotions on the thumbnails. This is to be expected as music videos typically can be very emotional in different ways depending on the vibe of the song or the message the artist is trying to get across with their music and music video.
+
