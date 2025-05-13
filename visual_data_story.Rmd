@@ -1,0 +1,98 @@
+---
+title: My analysis on YouTube videos
+author: Deasy Lie
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+body {
+  background-color: #f0f9e8;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 90px;
+}
+
+.author {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #33a02c;
+  font-size: 25px;
+}
+
+h1 {
+  font-weight: bold;
+  text-align: center;
+  color: #084081;
+  font-size: 45px;
+}
+
+h2 {
+  font-weight: bold;
+  color: #084081;
+  font-size: 25px;
+}
+
+h3 {
+  font-weight: bold;
+  text-align: center;
+  color: #084081;
+  font-size: 30px;
+}
+
+p, li {
+  color: #0868ac;
+  font-size: 18px;
+}
+
+
+```
+
+## Youtube Thumbnail Analysis
+
+I am looking to analyse the obtained data from my google form to see whether certain features of a YouTube thumbnail will affect my likeliness to watch and the appeal of the YouTube video. Additionally I will be looking at the affect of video duration on my likeliness to watch a video as well.
+
+## Does duration of a YouTube video affect my likeliness to watch it?
+
+![](plot1.png)
+
+This plot tells me that I am more likely to watch YouTube videos with a shorter duration and least likely to watch YouTube videos that have longer video durations.
+
+Longer videos tend to decrease my likeliness to watch the video however we can see that for a rating of 4 the video duration is higher than for a rating of 3.
+
+## Does my likeliness to watch a YouTube video depend on the video genre?
+
+![](plot2.png)
+
+We can see from our plot that the mean likeliness of me watching a YouTube video is higher for the 'Entertainment' genre and lowest for 'Educational' genre.
+
+## Do thumbnails mostly contain more image than text?
+
+![](plot3.png)
+
+Thumbnails are very likely to contain more images that text. This is as expected as thumbnails are normally image-heavy to attract attention to the video so people are more likely to watch the video through a good image-heavy thumbnail.
+
