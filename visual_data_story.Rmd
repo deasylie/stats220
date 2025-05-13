@@ -55,6 +55,7 @@ h2 {
   font-weight: bold;
   color: #084081;
   font-size: 25px;
+  text-align: center:
 }
 
 h3 {
@@ -76,7 +77,9 @@ p, li {
 
 I am looking to analyse the obtained data from my google form to see whether certain features of a YouTube thumbnail will affect my likeliness to watch and the appeal of the YouTube video. Additionally I will be looking at the affect of video duration on my likeliness to watch a video as well.
 
-## Does duration of a YouTube video affect my likeliness to watch it?
+## First Plot
+
+My first plot is used to determine if duration of a YouTube video affects my likeliness to watch the video.
 
 ![](plot1.png)
 
@@ -84,13 +87,19 @@ This plot tells me that I am more likely to watch YouTube videos with a shorter 
 
 Longer videos tend to decrease my likeliness to watch the video however we can see that for a rating of 4 the video duration is higher than for a rating of 3.
 
-## Does my likeliness to watch a YouTube video depend on the video genre?
+## Second Plot
+
+My second plot is used to see if my likeliness to watch a YouTube video depends on the genre of the video.
+
+Video genres include: Entertainment, Music, Gaming and Educational.
 
 ![](plot2.png)
 
 We can see from our plot that the mean likeliness of me watching a YouTube video is higher for the 'Entertainment' genre and lowest for 'Educational' genre.
 
-## Do thumbnails mostly contain more image than text?
+## Third Plot
+
+My last plot is used to look at whether thumbnails are most likely to contain more images, more text or be balanced. We should typically get a higher count of thumbnails that are image-heavy.
 
 ![](plot3.png)
 
